@@ -5,7 +5,7 @@
             public name: string,
             public realName: string
         ){
-            console.log('Constructor Avenger llamado!');
+            /* console.log('Constructor Avenger llamado!'); */
         }
 
         // Para acceder al metodo de tipo protected, es por medio de extends
@@ -22,7 +22,7 @@
             public isMutant: boolean
         ) {
             super( name, realname )
-            console.log('Constructor Xmen llamado');
+            /* console.log('Constructor Xmen llamado'); */
         }
 
 
@@ -39,7 +39,7 @@
         }
 
         getFullnamedesdeXmen() {
-            console.log( super.getFullName() );
+            /* console.log( super.getFullName() ); */
             
         }
     }
@@ -47,9 +47,9 @@
     const wolverine = new Xmen( 'Wolverine', 'Logan', true );
 
     // Imprimo set fullName( name:string ){}
-    wolverine.fullName ='Fercho';
+    /* wolverine.fullName ='Fercho';
     
-    console.log(wolverine.fullName);
+    console.log(wolverine.fullName); */
     
     // wolverine.getFullnamedesdeXmen();
     
