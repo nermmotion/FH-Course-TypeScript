@@ -30,6 +30,13 @@
             return `${ this.name } - ${ this.realName }`
         }
 
+        set fullName( name:string ) {
+            this.name = name;
+
+            if ( name.length < 3 ) {
+                throw new Error("El nombre debe ser mayor de 3 letras");
+            }
+        }
 
         getFullnamedesdeXmen() {
             console.log( super.getFullName() );
@@ -39,6 +46,9 @@
 
     const wolverine = new Xmen( 'Wolverine', 'Logan', true );
 
+    // Imprimo set fullName( name:string ){}
+    wolverine.fullName ='Fercho';
+    
     console.log(wolverine.fullName);
     
     // wolverine.getFullnamedesdeXmen();
