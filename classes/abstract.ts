@@ -28,7 +28,7 @@
         console.log( character.realName );
     }
 
-    printName( wolverine );
+    // printName( wolverine );
     
 
 })()
