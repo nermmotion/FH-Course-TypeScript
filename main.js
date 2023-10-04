@@ -22,6 +22,9 @@
             id: 123,
             zip: 'Ky2 Sud',
             city: 'Ontario'
+        },
+        getFullAddress() {
+            return this.address.city;
         }
     };
     const client2 = {
@@ -31,6 +34,9 @@
             id: 126,
             zip: 'Ytz Ame',
             city: 'Tejax'
+        },
+        getFullAddress() {
+            return this.address.city;
         }
     };
 })();

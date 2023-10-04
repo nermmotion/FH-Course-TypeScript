@@ -5,6 +5,8 @@
         name: string;
         age?: number;
         address: Address
+        // método dentro de la interfaz
+        getFullAddress( id: string ): void;
     }
     
     interface Address {
@@ -20,6 +22,10 @@
             id: 123,
             zip: 'Ky2 Sud',
             city: 'Ontario'
+        },
+        // un metodo dentro de la definición
+        getFullAddress() {
+            return this.address.city;
         }
     }
     
@@ -30,6 +36,10 @@
             id: 126,
             zip: 'Ytz Ame',
             city: 'Tejax'
+        },
+        // un metodo dentro de la definición
+        getFullAddress() {
+            return this.address.city;
         }
     }
 
