@@ -1,91 +1,91 @@
-(() => {
+// Crear interfaces
 
-  type Vehicles = {
-    carroceria: string;
-    modelo: string;
-    antibalas: boolean;
-    pasajeros: number;
-    disparar?: () => void;
-  }
-  
-  // Objetos
-  const batimovil: Vehicles = {
-    carroceria: "Negra",
-    modelo: "6x6",
-    antibalas: true,
-    pasajeros:4
-  };
-  
-  const bumblebee: Vehicles = {
-    carroceria: "Amarillo con negro",
-    modelo: "4x2",
-    antibalas: true,
-    pasajeros:4,
-    disparar() { // El metodo disparar es opcional
-      console.log("Disparando");
-    }
-  };
-  
-  
-  // Villanos debe de ser un arreglo de objetos personalizados
-  type Villian = {
-    nombre: string;
-    edad?: number;
-    mutante: boolean;
-  }
-  
-  console.log('Pasando por aquí');
-  
-  
-  const villanos: Villian[] = [{
-    nombre:"Lex Luthor",
-    edad: 54,
-    mutante:false
-  },{
-    nombre: "Erik Magnus Lehnsherr",
-    edad: 49,
-    mutante: true
-  },{
-    nombre: "James Logan",
-    edad: undefined,
-    mutante: true
-  }];
-  
-  // Multiples tipos
-  // cree dos tipos, uno para charles y otro para apocalipsis
-  
-  type charles = {
-    poder: string;
-    estatura: number;
-  }
-  type apocalipsis = {
-    lider: boolean;
-    miembros: string[];
-  }
-  const charles = {
-    poder:"psiquico",
-    estatura: 1.78
-  };
-  
-  console.log('Pasando por acá');
-  const apocalipsis = {
-    lider:true,
-    miembros: ["Magneto","Tormenta","Psylocke","Angel"]
-  }
-  
-  // Mystique, debe poder ser cualquiera de esos dos mutantes (charles o apocalipsis)
-  let mystique: (charles | apocalipsis);
-  
-  mystique = charles;
-  console.log(mystique.poder);
-  
-  mystique = apocalipsis;
-  console.log(mystique.miembros[2]);
-  
-  let a = [1, 2, 5, 2, 1, 8];
-  
-  let b = [...new Set(a)];
-  console.log(b);
-  
-})()
+// Cree una interfaz para validar el auto (el valor enviado por parametro)
 
+// Respuesta #1
+interface Auto {
+  encender: boolean;
+  velocidadMaxima: number;
+  acelerar(): void;
+}
+
+const conducirBatimovil = ( auto:Auto ):void => {
+  auto.encender = true;
+  auto.velocidadMaxima = 100;
+  auto.acelerar();
+}
+
+const batimovil: Auto = {
+  encender:false,
+  velocidadMaxima:0,
+  acelerar(){
+    console.log("...... gogogo!!!");
+  }
+}
+
+// Cree una interfaz con que permita utilzar el siguiente objeto
+// utilizando propiedades opcionales
+
+// Respuesta #2
+interface Guason {
+  reir?: boolean;
+  comer?: boolean;
+  llorar?: boolean;
+}
+
+const guason:Guason = {
+  reir: true,
+  comer:true,
+  llorar:false
+}
+
+const reir = ( guason:Guason ):void => {
+  if( guason.reir ){
+    console.log("JAJAJAJA");
+  }
+}
+
+
+// Cree una interfaz para la siguiente funcion
+
+// Respuesta #3
+interface Ciudadanos {
+  (ciudadanos: string[]): number;
+}
+
+const ciudadGotica:Ciudadanos = ( ciudadanos:string[] ):number => {
+  return ciudadanos.length;
+}
+
+// Cree una interfaz que obligue crear una clase
+// con las siguientes propiedades y metodos
+
+// Respuesta #4
+interface Data {
+  nombre: string;
+  edad: number;
+  sexo: string;
+  estadoCivil: string;
+  imprimirBio(): void;
+}
+
+/*
+  propiedades:
+    - nombre
+    - edad
+    - sexo
+    - estadoCivil
+    - imprimirBio(): void // en consola una breve descripcion.
+*/
+class Persona implements Data {
+  constructor () {}
+
+  public nombre: string = 'Fercho';
+  public edad: number = 30;
+  public sexo: string = 'Hombre';
+  public estadoCivil: string = 'Soltero';
+  public imprimirBio(): void {
+      console.log(`Mi nombre es ${this.nombre}, tengo ${this.edad} años, estoy un ${this.estadoCivil}`)
+  }
+
+}
